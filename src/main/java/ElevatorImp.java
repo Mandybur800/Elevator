@@ -61,11 +61,8 @@ public class ElevatorImp implements Elevator{
                     + ", elevator: " + elevator + " aim floor:" + aim);
             step();
             removeAll(floor);
-            if (elevator.size() == 0 && floor == 0) {
-                direction = Direction.UP;
-            }
-            if (elevator.size() == 0 && floor == localTower.length - 1) {
-                direction = Direction.DOWN;
+            if (elevator.size() == 0) {
+                findPeople(localTower);
             }
         }
         System.out.println();
@@ -77,6 +74,20 @@ public class ElevatorImp implements Elevator{
         }
     }
 
+    private void findPeople(int[][] localTower) {
+        while (!contains(localTower[floor])) {
+            if (floor == 0) {
+                direction = Direction.UP;
+            }
+            if (floor == localTower.length - 1) {
+                direction = Direction.DOWN;
+            }
+            if (!contains(localTower)) {
+                break;
+            }
+            step();
+        }
+    }
     private void removeAll(int floor) {
         while (elevator.remove(Integer.valueOf(floor))) {
         }
