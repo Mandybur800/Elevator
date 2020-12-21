@@ -1,8 +1,8 @@
 import java.util.Random;
 
 public class GeneratorImp implements Generator {
-    @Override
-    public int[] getRandomFloor(int numberOfFloor, int maxFloors) {
+
+    private int[] getRandomFloor(int numberOfFloor, int maxFloors) {
         int[] floor = new int[new Random().nextInt(11)];
         for (int i = 0; i < floor.length; i++) {
             int neededFloor = new Random().nextInt(maxFloors + 1);

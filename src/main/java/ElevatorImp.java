@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ElevatorImp implements Elevator{
+public class ElevatorImp implements Elevator {
     private List<Integer> elevator;
     private int floor;
     private int aim;
@@ -16,22 +16,6 @@ public class ElevatorImp implements Elevator{
 
     public List<Integer> getElevator() {
         return elevator;
-    }
-
-    public int getFloor() {
-        return floor;
-    }
-
-    public void setFloor(int floor) {
-        this.floor = floor;
-    }
-
-    public int getAim() {
-        return aim;
-    }
-
-    public void setAim(int aim) {
-        this.aim = aim;
     }
 
     @Override
@@ -48,8 +32,8 @@ public class ElevatorImp implements Elevator{
                     findDirection();
                 }
                 if (elevator.size() < 5 && localTower[floor][i] != -1
-                && (direction == Direction.UP && localTower[floor][i] > floor
-                || direction == Direction.DOWN && localTower[floor][i] < floor)) {
+                        && (direction == Direction.UP && localTower[floor][i] > floor
+                        || direction == Direction.DOWN && localTower[floor][i] < floor)) {
                     elevator.add(localTower[floor][i]);
                     aim = direction == Direction.DOWN ? Math.min(localTower[floor][i], aim)
                             : Math.max(localTower[floor][i], aim);
@@ -68,7 +52,7 @@ public class ElevatorImp implements Elevator{
         System.out.println();
         System.out.println("People in elevator: " + elevator);
         System.out.println();
-        for (int i = 0 ; i < localTower.length; i++) {
+        for (int i = 0; i < localTower.length; i++) {
             int[] ints = localTower[i];
             System.out.println("Floor #" + i + Arrays.toString(ints));
         }
@@ -88,10 +72,12 @@ public class ElevatorImp implements Elevator{
             step();
         }
     }
+
     private void removeAll(int floor) {
         while (elevator.remove(Integer.valueOf(floor))) {
         }
     }
+
     private void step() {
         if (direction == Direction.DOWN) {
             floor--;
@@ -100,7 +86,7 @@ public class ElevatorImp implements Elevator{
         }
     }
 
-    private  void  findDirection() {
+    private void findDirection() {
         if (aim > floor) {
             direction = Direction.UP;
         } else {
@@ -117,7 +103,9 @@ public class ElevatorImp implements Elevator{
             }
         }
         return false;
-    }private boolean contains(int[] floor) {
+    }
+
+    private boolean contains(int[] floor) {
         for (int anInt : floor) {
             if (anInt != -1) {
                 return true;

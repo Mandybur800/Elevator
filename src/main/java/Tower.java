@@ -14,4 +14,8 @@ public class Tower {
     public int[][] getTower() {
         return tower;
     }
+
+    public void setTower(int[][] tower) {
+        this.tower = tower;
+    }
 }
