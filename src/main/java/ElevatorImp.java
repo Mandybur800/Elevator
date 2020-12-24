@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ElevatorImp implements Elevator {
     private List<Integer> elevator;
@@ -40,9 +41,9 @@ public class ElevatorImp implements Elevator {
                     localTower[floor][i] = -1;
                 }
             }
-            System.out.println("Current floor: " + floor + " "
-                    + Arrays.toString(localTower[floor])
-                    + ", elevator: " + elevator + " aim floor:" + aim);
+            delay(1);
+            System.out.printf("Current floor: %2d %40s, elevator: %18s, aim floor:%d \n",
+                    floor, Arrays.toString(localTower[floor]), elevator, aim);
             step();
             removeAll(floor);
             if (elevator.size() == 0) {
@@ -55,6 +56,14 @@ public class ElevatorImp implements Elevator {
         for (int i = 0; i < localTower.length; i++) {
             int[] ints = localTower[i];
             System.out.println("Floor #" + i + Arrays.toString(ints));
+        }
+    }
+
+    private static void delay(int seconds) {
+        try {
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
